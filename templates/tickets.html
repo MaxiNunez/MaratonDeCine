@@ -1,0 +1,34 @@
+<HTMl>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Tickets</title>
+    </head>
+    <body class="bg-dark">
+        <div class="container-fluid">
+            <h1 class="text-center py-3 text-white">ENTRADAS</h1>    
+        </div>
+
+        <div class="container col-4">
+            <ul class="list-group" method="POST">
+                {% for d in dic %}
+                    {%if dic[d] == "disponible" %}
+                        <li class="list-group-item">Ticket N° {{d}}: {{dic[d]}}
+                            <a href="/comprar?c={{d}}" class="btn btn-secondary" style="margin-left: 110px">Reservar</a>
+                        </li>
+                    {% elif dic[d] == "reservado" %}
+                        <li class="list-group-item list-group-item-success">Ticket N° {{d}}: {{dic[d]}}
+                            <a href="/confircompra?com={{d}}" class="btn btn-success" style="margin-left: 110px">Comprar !</a>
+                        </li>
+                    {%else%}
+                        <li class="list-group-item list-group-item-danger">Ticket N° {{d}}: {{dic[d]}}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <div class="text-center py-3">
+                <a href="/" class="btn btn-info">Volver</a>
+            </div>
+        </div>
+    </body>
+</HTMl>
